@@ -1,0 +1,17 @@
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2">
+  <h2 class="mb-2 text-md text-center">{{product.title}}</h2>
+  <p>Prise: <span class="font-bold">{{product.price | currency:'EUR'}}</span></p>
+
+  <button class="border py-2 px-4"
+          (click)="details = !details"
+          [ngClass]="details ? 'rounded bg-red-700' : 'rounded bg-amber-400'"
+  >
+    {{details ? 'Hide ' : 'Show '}} Description
+  </button>
+
+  <div *ngIf="details">
+    <p>{{product.description}}</p>
+    <p>Rate: <span class="font-bold">{{product.rating.rate | number: '1.2-2'}}</span></p>
+  </div>
+</div>
