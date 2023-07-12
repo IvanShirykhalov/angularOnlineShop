@@ -21,7 +21,7 @@ export class CreateProductComponent {
   }
 
   submit() {
-    console.log('')
+
   }
 
 }
