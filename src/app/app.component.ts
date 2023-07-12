@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
   title = 'angular online shop';
   //products: Product[] = []
   loading = false
-  products$: Observable<Product[]>
+  //products$: Observable<Product[]>
   term = ''
 
   constructor(
-    private productsService: ProductsService,
+    public productsService: ProductsService,
     public modalService: ModalService
   ) {
 
@@ -25,13 +25,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
-    this.products$ = this.productsService.getAll().pipe(tap(() => {
-      this.loading = false
-    }))
-    // this.productsService.getAll().subscribe((products: Product[]) => {
-    //   this.products = products
+    // this.products$ = this.productsService.getAll().pipe(tap(() => {
     //   this.loading = false
-    // })
-
+    // }))
+    this.productsService.getAll().subscribe(() => {
+      this.loading = false
+    })
   }
 }

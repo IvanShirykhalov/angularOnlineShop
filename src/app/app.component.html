@@ -7,8 +7,8 @@
          [(ngModel)]="term"
   />
   <p *ngIf="loading" class="text-center text-2xl  ">Loading...</p>
-  <div *ngIf="products$ | async as products">
-    <app-product *ngFor="let product of products | filterProducts: term" [product]="product"></app-product>
+  <div *ngIf="productsService.products">
+    <app-product *ngFor="let product of productsService.products | filterProducts: term" [product]="product"></app-product>
   </div>
   <app-modal title="Create new product" *ngIf="modalService.isVisible$ | async">
     <app-create-product></app-create-product>
